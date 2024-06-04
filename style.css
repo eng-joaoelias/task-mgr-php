@@ -87,6 +87,10 @@ body {
     transition: 0.4s;
 }
 
+button i {
+    font-size: 1.3vw;
+}
+
 .separador {
     background: #bbb;
     height: 0.2vh;
@@ -113,7 +117,7 @@ body {
     margin-bottom: 1.6vh;
     padding: 1.67vh 0.9375vw;
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     transition: 0.4s;
 }
@@ -126,10 +130,21 @@ body {
 .apaga {
     background: #f00;
     padding: 1.67vh 0.9375vw;
+    color: #fff;
+    border: none;
+}
+
+.rmv-tarefa {
+    background: transparent;
 }
 
 .apaga:hover {
     background: #b30000;
+    cursor: pointer;
+}
+
+.rmv-tarefa:hover{
+    background: transparent;
 }
 
 footer {
