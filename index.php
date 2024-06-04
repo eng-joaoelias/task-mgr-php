@@ -67,7 +67,7 @@ if (isset($_POST['key'])) {
                                 <span>$tarefa</span>
                                 <form action='' method='post' style='display:inline;'>
                                     <input type='hidden' name='key' value='$key'>
-                                    <button type='submit' class='apaga' onclick='return confirm(\"Deseja realmente remover essa tarefa?\")'>
+                                    <button type='submit' class='apaga rmv-tarefa' onclick='return confirm(\"Deseja realmente remover essa tarefa?\")'>
                                         <i class='fa fa-trash' aria-hidden='true'></i>
                                     </button>
                                 </form>
