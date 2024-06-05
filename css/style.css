@@ -13,6 +13,17 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+a,
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+a:hover {
+    font-weight: 800;
+}
 
 .container {
     background: #fff;
@@ -143,7 +154,7 @@ button i {
     cursor: pointer;
 }
 
-.rmv-tarefa:hover{
+.rmv-tarefa:hover {
     background: transparent;
 }
 
@@ -152,4 +163,57 @@ footer {
     align-items: center;
     justify-content: center;
     padding: 1.67vh 0.9375vw;
+}
+
+.container-detalhes {
+    background-color: #fff;
+    max-width: 700px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.67vh 0.9375vw;
+    border-radius: 12px;
+}
+
+.linha {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.67vh 0.9375vw;
+}
+
+.detalhes {
+    width: 23.4374vw;
+    border: 1px solid #f0f0f5;
+    border-radius: 4px;
+    margin-right: 0.56vw;
+    margin-left: 1.11vw;
+    padding: 2.22vh 1.25vw;
+}
+
+.detalhes dl dt {
+    margin-top: 0.56vh;
+    margin-bottom: 0.56vh;
+    font-weight: bold;
+    color: #666;
+}
+
+.detalhes dl dd {
+    margin-top: 0.56vh;
+    margin-bottom: 1.67vh;
+    color: #999;
+}
+
+.imagem {
+    width: 430px;
+    border: 1px solid #f0f0f5;
+    border-radius: 8px;
+    margin-right: 0.625vw;
+    margin-left: 0.625vw;
+    padding: 2.22vh 1.25vw;
+}
+
+.imagem img {
+    max-width: 100%;
+    height: auto;
 }
