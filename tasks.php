@@ -1,10 +1,10 @@
 <div class="lista-tarefas">
     <?php
-    if (isset($_SESSION['tarefas'])) {
+    if (isset($_SESSION['tarefas']) && is_array($_SESSION['tarefas'])) {
         echo "<ul>";
         foreach ($_SESSION['tarefas'] as $key => $tarefa) {
             echo "<li>
-                <span>$tarefa</span>
+                <a href=\"details.php?key=$key\" target=\"_blank\">" . htmlspecialchars($tarefa['nome-tarefa']) . "</a>
                 <form action='' method='post' style='display:inline;'>
                     <input type='hidden' name='key' value='$key'>
                     <button type='submit' class='apaga rmv-tarefa' onclick='return confirm(\"Deseja realmente remover essa tarefa?\")'>
