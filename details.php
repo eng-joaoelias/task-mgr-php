@@ -5,18 +5,10 @@ if (isset($_GET['key']) && is_numeric($_GET['key'])) {
     $key = (int)$_GET['key'];
     if (isset($_SESSION['tarefas'][$key])) {
         $tarefa = $_SESSION['tarefas'][$key];
-        /*
-        echo "<h1>Detalhes da Tarefa</h1>";
-        echo "<p><strong>Nome:</strong> " . htmlspecialchars($tarefa['nome-tarefa']) . "</p>";
-        echo "<p><strong>Descrição:</strong> " . htmlspecialchars($tarefa['descricao-tarefa']) . "</p>";
-        echo "<p><strong>Data:</strong> " . htmlspecialchars($tarefa['data-tarefa']) . "</p>";
-        */
     } else {
         $_SESSION['mensagem'] = 'Tarefa não encontrada.';
-        /*echo "<p>Tarefa não encontrada.</p>";*/
     }
 } else {
-    /*echo "<p>Índice de tarefa inválido.</p>";*/
     $_SESSION['mensagem'] = 'Índice de tarefa inválido.';
 }
 ?>
@@ -63,7 +55,13 @@ if (isset($_GET['key']) && is_numeric($_GET['key'])) {
             </div>
 
             <div class="imagem">
-                <img src="uploads/<?php echo $tarefa['imagem-tarefa'];?>" alt="Foto da Tarefa">
+                <img src="<?php 
+                if ($tarefa['imagem-tarefa'] != "") {
+                    echo "uploads/".$tarefa['imagem-tarefa'];
+                } else {
+                    echo "./assets/default.svg";
+                }
+                ?>" alt="Foto da Tarefa">
             </div>
 
         </div>
