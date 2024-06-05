@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 if (!isset($_SESSION['tarefas']) || !is_array($_SESSION['tarefas'])) {
@@ -11,12 +11,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($_POST['nome-tarefa'] != "") {
 
-            if ( isset($_FILES['imagem-tarefa']) ) {
-                  $extensao = strtolower( substr($_FILES['imagem-tarefa']['name'], -4) );
-                  $nome_arquivo = md5( date('Y.m.d.H.i.s') ) . $extensao;
-                  $diretorio = 'uploads/';
-                  
-                  move_uploaded_file($_FILES['imagem-tarefa']['tmp_name'], $diretorio.$nome_arquivo);
+            $nome_arquivo = '';
+
+            if (isset($_FILES['imagem-tarefa']) && $_FILES['imagem-tarefa']['error'] == UPLOAD_ERR_OK) {
+
+                $extensao = strtolower(pathinfo($_FILES['imagem-tarefa']['name'], PATHINFO_EXTENSION));
+                $nome_arquivo = md5(date('Y.m.d.H.i.s')) . '.' . $extensao;
+                $diretorio = 'uploads/';
+
+                if (move_uploaded_file($_FILES['imagem-tarefa']['tmp_name'], $diretorio . $nome_arquivo)) {
+                    $nome_arquivo = $diretorio . $nome_arquivo; // Adiciona o caminho completo
+                } else {
+                    $nome_arquivo = ''; // Se o upload falhar, define como string vazia
+                }
             }
 
             $dados = [
@@ -30,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             unset($_POST['nome-tarefa']);
             unset($_POST['descricao-tarefa']);
             unset($_POST['data-tarefa']);
-            
+            unset($_POST['imagem-tarefa']);
         } else {
             $_SESSION['mensagem'] = "Preencha o nome da tarefa!";
         }
